@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt") // Room에서 kapt를 사용하기 위해 추가
 }
 
 android {
@@ -9,6 +10,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -50,4 +52,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Room dependencies
+    implementation("androidx.room:room-ktx:2.4.1")
+    implementation("androidx.room:room-runtime:2.4.1")
+    kapt("androidx.room:room-compiler:2.4.1")
 }
